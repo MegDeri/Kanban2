@@ -26,7 +26,7 @@ function Column(id, name) {
               .then(function(res) {
                 return res.json();
               })
-              .then(function() {
+              .then(function(resp) {
                 var card = new Card(resp.id, cardName);
                 self.addCard(card);
               });
