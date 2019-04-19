@@ -47,7 +47,6 @@ Column.prototype = {
         return resp.json();
       })
       .then(function(resp) {
-        setupColumns(resp.columns);
         self.element.parentNode.removeChild(self.element);
       });
 	}
