@@ -1,67 +1,121 @@
-body {margin: 0;}
-* {box-sizing: border-box;}
+//Mixins
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
 
-.ui-sortable {
-  min-height: 80px;
+//Colors
+$paragraph-color: #000000;
+$button-color:#033247;
+$font-color: #fff;
+$shadow-color: #3d5d7a;
+$shadow-button: #7bafdf;
+$general-color: #ccc;
+$background-color1: #4b7080;
+$background-color: #6c88c1;
+//Fonts
+$brand-font: 'Nova Mono', monospace;
+
+//General styles
+body {
+  font-family: $brand-font;
+  background: linear-gradient(to right , $background-color1, $background-color, $background-color1);
+  margin: 0 auto;
+  text-align: center;
 }
-.btn-delete {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 22px;
-  height: 22px;
-  border: 0;
-  background-color: rgba(0,0,0,0.4);
-  color: white;
+
+* {
+  box-sizing: border-box;
 }
-/* BOARD */
+
 .board h1 {
-  margin-left: 8px;
+  font-size: 42px;
+  font-weight: bold;
+  color: $font-color;
 }
+
+[class*="btn-"] {
+  color: $font-color;
+  background: $button-color;
+  @include border-radius(10%);
+  border: none;
+  box-shadow: 2px 2px 1px $shadow-button;
+}
+
+.create-column {
+  @include border-radius(5%);
+  color: $font-color;
+  background: $button-color;
+  border: none;
+  height: 50px;
+  width: 135px;
+  font-size: 18px;
+  box-shadow: 10px 10px 7px $shadow-color  ;
+}
+
 .column-container {
+  padding: 20px;
+  margin: 20px auto;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  justify-content: center;
+  flex-wrap: wrap;
 }
- /*COLUMN */
+
 .column {
-  order: 1;
-  min-width: 300px;
-  min-height: 50vh;
-  background-color: lightgrey;
-  margin-left: 8px;
-  list-style: none;
   position: relative;
+  background-color: $font-color;
+  box-shadow: 10px 10px 7px $shadow-color;
+  @include border-radius(5%);
+  min-width: 280px;
+  max-width: 290px;
+  margin: 10px;
+  padding: 10px;
+  .column-title {
+    border-bottom: 2px dashed $general-color;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+  }
+  .btn-delete {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    height: 30px;
+    width: 30px;
+  }
+  .add-card {
+    @include border-radius(5%);
+    color: $font-color;
+    background: $button-color;
+    border: none;
+    height: 40px;
+    width: 80px;
+    box-shadow: 3px 3px 2px $shadow-button;
+  }
 }
-.column-add-card {
-  cursor: pointer;
-  text-decoration: underline;
-  margin: 5px 8px;
-  display: block;
-}
-/* STYLE KARTY */
-.card {
-  box-sizing: border-box;
-  display: block;
-  height: 60px;
-  margin-bottom: 5px;
-  padding: 4px;
-  overflow: hidden;
-  position: relative;
-}
-.card-list {
-  list-style: none;
-  margin: 5px;
-  padding: 0px;
-}
-.card-description {
-  margin: 2px 0;
-}
-.card-placeholder {
-  box-sizing: border-box;
-  display: block;
-  height: 60px;
-  margin-bottom: 5px;
-  border: 2px solid lightgrey;
-  background-color: lightblue;
+
+.column-card-list {
+  min-height: 280px;
+  list-style-type: none;
+  padding: 0;
+  .card {
+    min-height: 80px;
+    @include border-radius(10px);
+    border: 1px solid $general-color;
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 20px;
+    .btn-delete {
+      text-align: center;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      height: 25px;
+      width: 25px;
+    }
+  }
 }
