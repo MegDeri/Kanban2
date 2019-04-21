@@ -1,11 +1,12 @@
 // Class card
-function Card(id, name, columnId) {
+function Card(id, name, columnId, color) {
   var self = this;
+  this.color = color;
   this.columnId = columnId;
   this.id = id;
   this.name = name || 'No name given';
   this.element = generateTemplate('card-template', { name: this.name }, 'li');
-
+  this.element.querySelector('.card').style.backgroundColor = this.color;
   this.element.querySelector('.card').addEventListener('click', function (event) {
     event.stopPropagation();
     if (event.target.classList.contains('btn-delete')) {

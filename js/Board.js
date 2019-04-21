@@ -2,7 +2,7 @@ var board = {
   name: 'Kanban',
   addColumn: function(column) {
     this.element.appendChild(column.element);
-    initSortable(column.id); 
+    initSortable(column.id, column.color); 
   },
   element: document.querySelector('#board .column-container')
 };
@@ -26,10 +26,13 @@ document.querySelector('#board .create-column').addEventListener('click', functi
   });
 });
 	
-function initSortable(id) {
+function initSortable(id, color) {
   var el = document.getElementById(id);
   var sortable = Sortable.create(el, {
     group: 'kanban',
-    sort: true
+    sort: true,
+    onAdd: function(target){
+      target.item.querySelector(".card").style.backgroundColor = color;
+    }
   });
 }

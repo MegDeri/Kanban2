@@ -1,6 +1,16 @@
+//random color function
+function randomColor() {
+  var chars = '0123456789abcdef';
+  var str = '#';
+  for (var i = 0; i < 6; i++) {
+    str += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return str;
+}
+
 function Column(id, name) {
   var self = this;
-
+  this.color = randomColor();
   this.id = id;
   this.name = name || 'no name given';
   this.element = generateTemplate('column-template', { name: this.name, id: this.id });
