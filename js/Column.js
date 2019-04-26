@@ -36,7 +36,7 @@ function Column(id, name) {
         return res.json();
       })
       .then(function(resp) {
-        var card = new Card(resp.id, cardName, self.id);
+        var card = new Card(resp.id, cardName, self.id, self.color);
         self.addCard(card);
       });
     }
