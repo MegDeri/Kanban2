@@ -1,4 +1,4 @@
 ## Kanban2
 ## DEMO: https://megderi.github.io/Kanban2/
-## Description: 
+### Description: 
 Kanban App with external API (by Kodilla)
